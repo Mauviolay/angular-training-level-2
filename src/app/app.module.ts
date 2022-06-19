@@ -1,13 +1,32 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
 
-import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
+import { AppComponent } from "./app.component";
+import { AddTrackingComponent } from "./stock-tracking/add-tracking/add-tracking.component";
+import { ShowStocksComponent } from "./stock-tracking/show-stocks/show-stocks.component";
+import { SentimentsDisplayerComponent } from "./sentiments-displayer/sentiments-displayer.component";
+import { RouterModule } from "@angular/router";
+import { AppRoutingModule } from './app-routing.module';
+import { StockTrackingComponent } from './stock-tracking/stock-tracking.component';
+import { SentimentComponent } from './sentiments-displayer/sentiment/sentiment.component';
+import { CurrentTrendComponent } from './shared/current-trend/current-trend.component';
+import { StockComponent } from './stock-tracking/show-stocks/stock/stock.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
+  imports: [BrowserModule,
+    FormsModule,
+    RouterModule,
+    AppRoutingModule],
+  declarations: [AppComponent,
+    AddTrackingComponent,
+    ShowStocksComponent,
+    SentimentsDisplayerComponent,
+    StockTrackingComponent,
+    SentimentComponent,
+    CurrentTrendComponent,
+    StockComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
