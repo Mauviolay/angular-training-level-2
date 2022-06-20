@@ -1,4 +1,4 @@
-<div> <!-- TODO : ngFor sur la liste de stock -->
-  <a>X</a> <!-- TODO : retirer l'objet de la liste de stock -->
-  <app-stock></app-stock>
+<div *ngFor="let tracking of trackings;trackBy:trackByTracking">
+  <a (click)="deleteTracking(tracking)">X</a>
+  <app-stock [symbol]="tracking"></app-stock>
 </div>

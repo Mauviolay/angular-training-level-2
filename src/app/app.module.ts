@@ -12,12 +12,14 @@ import { StockTrackingComponent } from './stock-tracking/stock-tracking.componen
 import { SentimentComponent } from './sentiments-displayer/sentiment/sentiment.component';
 import { CurrentTrendComponent } from './shared/current-trend/current-trend.component';
 import { StockComponent } from './stock-tracking/show-stocks/stock/stock.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   imports: [BrowserModule,
     FormsModule,
     RouterModule,
-    AppRoutingModule],
+    AppRoutingModule,
+    HttpClientModule],
   declarations: [AppComponent,
     AddTrackingComponent,
     ShowStocksComponent,
