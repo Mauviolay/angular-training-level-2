@@ -1,23 +1,22 @@
-import { Component, OnInit } from "@angular/core";
-import { StockTrackingService } from "../stock-tracking.service";
+import { Component } from "@angular/core";
+import { StockTrackingService } from "../../core/services/stock-tracking.service";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-add-tracking",
   templateUrl: "./add-tracking.component.html",
   styleUrls: ["./add-tracking.component.css"]
 })
-export class AddTrackingComponent implements OnInit {
-  symbol = '';
+export class AddTrackingComponent {
 
   constructor(private stockTrackingService: StockTrackingService) {
   }
 
-  ngOnInit(): void {
-  }
-
-  addTracking() {
-    console.log(this.symbol);
-    this.stockTrackingService.createTracking(this.symbol);
-    this.symbol = '';
+  addTracking(contactForm: NgForm) {
+    let symbol = contactForm.value.symbol;
+    if (symbol) {
+      this.stockTrackingService.createTracking(symbol);
+      contactForm.reset();
+    }
   }
 }

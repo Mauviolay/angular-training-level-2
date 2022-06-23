@@ -1,7 +1,10 @@
-<div>
-  <h2>JANUARY</h2>
-  <p>Change: -150</p>
-  <p>MSPR: 12.56</p>
-
-  <app-current-trend></app-current-trend>
+<div class="block flex-box">
+  <div class="flex-display">
+    <div class="informations">
+      <h2>{{sentiment.date | date: 'MMMM' | uppercase}}</h2>
+      <p>Change: {{sentiment.change}}</p> <!-- TODO Ajouter le +-->
+      <p>MSPR: {{sentiment.mspr}}</p>
+    </div>
+    <app-current-trend [trend]="sentiment.change"></app-current-trend>
+  </div>
 </div>

@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-stock-tracking',
   templateUrl: './stock-tracking.component.html',
   styleUrls: ['./stock-tracking.component.css']
 })
-export class StockTrackingComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class StockTrackingComponent {
 
 }

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Stock } from "../../../core/models/stock";
-import { ShowStocksService } from "../show-stocks.service";
+import { ShowStocksService } from "../../../core/services/show-stocks.service";
+import { Company } from "../../../core/models/company";
 
 @Component({
   selector: "app-stock",
@@ -8,16 +9,19 @@ import { ShowStocksService } from "../show-stocks.service";
   styleUrls: ["./stock.component.css"]
 })
 export class StockComponent implements OnInit {
-  @Input() symbol: string;
+  @Input() tracking: Company;
 
   stock!: Stock;
+  loaded = false;
 
   constructor(private showStocksService: ShowStocksService) {
   }
 
   ngOnInit(): void {
-  this.showStocksService.getStockFromSymbol(this.symbol)
-    .subscribe(value => this.stock = value);
+  this.showStocksService.getStockFromSymbol(this.tracking.symbol)
+    .subscribe(value => {
+      this.loaded = true;
+      this.stock = value;
+    });
   }
-
 }

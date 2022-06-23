@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { StockTrackingService } from "../stock-tracking.service";
+import { StockTrackingService } from "../../core/services/stock-tracking.service";
+import { Company } from "../../core/models/company";
 
 @Component({
   selector: 'app-show-stocks',
@@ -7,11 +8,11 @@ import { StockTrackingService } from "../stock-tracking.service";
   styleUrls: ['./show-stocks.component.css']
 })
 export class ShowStocksComponent implements OnInit {
-  trackings: string[] = [];
+  trackings: Company[] = [];
   constructor(private stockTrackingService: StockTrackingService) { }
 
-  trackByTracking(_index:number, tracking: string): string {
-    return tracking;
+  trackByTracking(_index:number, tracking: Company): string {
+    return tracking.symbol;
   }
 
   ngOnInit(): void {

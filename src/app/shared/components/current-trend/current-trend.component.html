@@ -1,0 +1,6 @@
+<div class="trend">
+  <span *ngIf="isPositive(); else negative" class="arrow positive">&uarr;</span>
+  <ng-template #negative>
+    <span class="arrow negative">&darr;</span>
+  </ng-template>
+</div>

@@ -1,7 +1,8 @@
 <div>
-  <h1>Tesla Inc (TSLA)</h1>
-  <app-sentiment></app-sentiment> <!-- TODO : boucler sur la liste des trois derniers sentiment -->
-  <app-sentiment></app-sentiment>
-  <app-sentiment></app-sentiment>
+  <h1>{{this.tracking?.description}} ({{this.tracking?.symbol}})</h1>
+  <div class="flex-display">
+    <p *ngIf="sentiments.length <= 0"> No sentiment was found in the last three months.</p>
+    <app-sentiment *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></app-sentiment>
+  </div>
   <button routerLink="/">< Back to list of stocks</button>
 </div>

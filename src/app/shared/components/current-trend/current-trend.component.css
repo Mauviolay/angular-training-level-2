@@ -1,0 +1,8 @@
+.positive {color : green}
+.negative {color: red}
+.arrow {
+    font-size: 5rem;
+}
+.trend {
+    margin: 2rem;
+}

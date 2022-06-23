@@ -1,1 +1,18 @@
-/* Add application styles & imports to this file! */
+.block {
+    border: black 1px solid;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.flex-display {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.flex-box {
+    width: 250px;
+}
+
+.informations {
+    width: 400px;
+}

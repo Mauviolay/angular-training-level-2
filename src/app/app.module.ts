@@ -10,9 +10,12 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import { StockTrackingComponent } from './stock-tracking/stock-tracking.component';
 import { SentimentComponent } from './sentiments-displayer/sentiment/sentiment.component';
-import { CurrentTrendComponent } from './shared/current-trend/current-trend.component';
+import { CurrentTrendComponent } from './shared/components/current-trend/current-trend.component';
 import { StockComponent } from './stock-tracking/show-stocks/stock/stock.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { FinnHubInterceptor } from "./core/interceptor/finnhub.interceptor";
+import { DatePipe } from "@angular/common";
 
 @NgModule({
   imports: [BrowserModule,
@@ -27,7 +30,12 @@ import { HttpClientModule } from "@angular/common/http";
     StockTrackingComponent,
     SentimentComponent,
     CurrentTrendComponent,
-    StockComponent],
+    StockComponent,
+    SpinnerComponent],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: FinnHubInterceptor, multi: true},
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,4 +1,4 @@
-<div *ngFor="let tracking of trackings;trackBy:trackByTracking">
-  <a (click)="deleteTracking(tracking)">X</a>
-  <app-stock [symbol]="tracking"></app-stock>
+<div class="block" *ngFor="let tracking of trackings;trackBy:trackByTracking">
+  <a (click)="deleteTracking(tracking.symbol)">X</a>
+  <app-stock [tracking]="tracking"></app-stock>
 </div>

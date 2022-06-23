@@ -1,11 +1,17 @@
-<div>
-  <h2>Tesla Inc ({{this.stock?.symbol}})</h2>  <!-- TODO : Ajouter le titre du stock -->
-  <p>Change today : +5.6%</p>  <!-- TODO : ajouter les infos et piper avec percent -->
-  <p>Current Price : $1,562</p>  <!-- TODO : ajouter les infos et piper avec currency -->
-  <p>Change today : $1,400</p> <!-- TODO : ajouter les infos et piper avec currency -->
-  <p>Change today : $1,750</p> <!-- TODO : ajouter les infos et piper avec currency -->
-
-  <app-current-trend></app-current-trend>
-  <button [routerLink]="['sentiment',this.stock?.symbol]">Go to social sentiment details ></button>
-
+<div *ngIf="loaded; else spinner">
+  <div class="flex-display">
+    <div class="informations">
+      <h2>{{this.tracking?.description}} ({{this.tracking?.symbol}})</h2>
+      <p>Change today : {{this.stock?.changeToday | number: '1.0-1'}}%</p> <!-- TODO Ajouter le +-->
+      <p>Current Price : {{this.stock?.currentPrice | currency}}</p>
+      <p>Opening price : {{this.stock?.openingPrice | currency}}</p>
+      <p>High price : {{this.stock?.highPrice | currency}}</p>
+    </div>
+    <app-current-trend [trend]="this.stock?.changeToday"></app-current-trend>
+  </div>
+  <button [routerLink]="['sentiment',this.tracking?.symbol]">Go to social sentiment details ></button>
 </div>
+
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>
