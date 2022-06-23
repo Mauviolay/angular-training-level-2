@@ -12,7 +12,7 @@ import { Sentiment } from "../core/models/sentiment";
 })
 export class SentimentsDisplayerComponent implements OnInit {
   tracking: Company;
-  sentiments: Sentiment[];
+  sentiments: Sentiment[] = [];
 
   constructor(private activatedroute: ActivatedRoute,
               private stockTrackingService: StockTrackingService,

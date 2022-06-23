@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { map, Observable, tap } from "rxjs";
+import { map, Observable } from "rxjs";
 import { mapToSentiments, ResultSentimentApi, Sentiment } from "../models/sentiment";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { DatePipe } from "@angular/common";
@@ -21,7 +21,6 @@ export class DisplaySentimentService {
       .set("from", this.datePipe.transform(threeMonthBefore, "yyyy-MM-01"));
 
     return this.httpClient.get("/api/v1/stock/insider-sentiment", { params })
-      .pipe(tap(value => console.log(value)),
-        map((resultSentimentApi: ResultSentimentApi) => mapToSentiments(resultSentimentApi.data)));
+      .pipe(map((resultSentimentApi: ResultSentimentApi) => mapToSentiments(resultSentimentApi.data)));
   }
 }
