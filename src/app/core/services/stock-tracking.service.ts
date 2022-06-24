@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Company, mapToCompany, ResultCompanyApi } from "../models/company";
 import { map, Observable, of, shareReplay } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { API_URL } from "../constants/api.constants";
 
 @Injectable({
   providedIn: "root"
@@ -26,17 +27,13 @@ export class StockTrackingService {
     return this.cache$;
   }
 
-  readTrackings(): Company[] {
-    return this.storedTrackings;
-  }
-
   getTrackingBySymbol(symbol: string): Company {
     return this.storedTrackings.find(tracking => tracking.symbol === symbol) || null;
   }
 
   createTracking(symbol: string): void {
     if (!this.storedTrackings.find(tracking => tracking.symbol === symbol)) {
-      this.httpClient.get("/api/v1/search?q=" + symbol)
+      this.httpClient.get(API_URL + "/api/v1/search?q=" + symbol)
         .pipe(map((companies: ResultCompanyApi) => (companies.result.filter(company => company.symbol === symbol))[0]),
           map(companyApi => mapToCompany(companyApi))
         ).subscribe(company => {
