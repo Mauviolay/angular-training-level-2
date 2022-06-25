@@ -4,5 +4,5 @@
     <p *ngIf="sentiments.length <= 0"> No sentiment was found in the last three months.</p>
     <app-sentiment *ngFor="let sentiment of sentiments" [sentiment]="sentiment"></app-sentiment>
   </div>
-  <button routerLink="/">< Back to list of stocks</button>
+  <button class="button" routerLink="/">< Back to list of stocks</button>
 </div>

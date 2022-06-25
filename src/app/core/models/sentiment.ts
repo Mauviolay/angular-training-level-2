@@ -1,8 +1,3 @@
-export interface ResultSentimentApi {
-  data: SentimentApi[],
-  symbol: string
-}
-
 export interface SentimentApi {
   symbol: string,
   year: number,
@@ -15,6 +10,11 @@ export interface Sentiment {
   date: Date,
   change: number,
   mspr: number
+}
+
+export interface ResultSentimentApi {
+  data: SentimentApi[],
+  symbol: string
 }
 
 export function mapToSentiments(sentimentApis: SentimentApi[]): Sentiment[]

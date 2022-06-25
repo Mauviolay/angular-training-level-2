@@ -2,14 +2,14 @@
   <div class="flex-display">
     <div class="informations">
       <h2>{{this.tracking?.description}} ({{this.tracking?.symbol}})</h2>
-      <p>Change today : {{this.stock?.changeToday | number: '1.0-1'}}%</p> <!-- TODO Ajouter le +-->
+      <p>Change today : {{this.stock?.changeToday | number: '1.0-1' | formatPositive}}%</p>
       <p>Current Price : {{this.stock?.currentPrice | currency}}</p>
       <p>Opening price : {{this.stock?.openingPrice | currency}}</p>
       <p>High price : {{this.stock?.highPrice | currency}}</p>
     </div>
     <app-current-trend [trend]="this.stock?.changeToday"></app-current-trend>
   </div>
-  <button [routerLink]="['sentiment',this.tracking?.symbol]">Go to social sentiment details ></button>
+  <button class="button" [routerLink]="['sentiment',this.tracking?.symbol]">Go to social sentiment details ></button>
 </div>
 
 <ng-template #spinner>

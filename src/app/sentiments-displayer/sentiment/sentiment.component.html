@@ -2,8 +2,8 @@
   <div class="flex-display">
     <div class="informations">
       <h2>{{sentiment.date | date: 'MMMM' | uppercase}}</h2>
-      <p>Change: {{sentiment.change}}</p> <!-- TODO Ajouter le +-->
-      <p>MSPR: {{sentiment.mspr}}</p>
+      <p>Change: {{sentiment.change | formatPositive}}</p>
+      <p>MSPR: {{sentiment.mspr| number: '1.0-2'}}</p>
     </div>
     <app-current-trend [trend]="sentiment.change"></app-current-trend>
   </div>

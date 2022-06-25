@@ -16,6 +16,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { FinnHubInterceptor } from "./core/interceptor/finnhub.interceptor";
 import { DatePipe } from "@angular/common";
+import { FormatPositivePipe } from "./core/pipes/format-positive.pipe";
 
 @NgModule({
   imports: [BrowserModule,
@@ -31,10 +32,11 @@ import { DatePipe } from "@angular/common";
     SentimentComponent,
     CurrentTrendComponent,
     StockComponent,
-    SpinnerComponent],
+    SpinnerComponent, FormatPositivePipe],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: FinnHubInterceptor, multi: true},
-    DatePipe
+    DatePipe,
+    FormatPositivePipe
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,7 @@
   <form #contactForm="ngForm" (ngSubmit)="addTracking(contactForm)">
     <label for="symbol">Enter the symbol of a stock to track (i.e. AAPL, TSLA, GOOGL)</label>
     <br />
-    <input maxlength="5" id="symbol" name="symbol" type="text" ngModel />
-    <button type="submit"> Track Stock</button>
+    <input class="input" maxlength="5" id="symbol" name="symbol" type="text" ngModel />
+    <button class="button" type="submit"> Track Stock</button>
   </form>
 </div>

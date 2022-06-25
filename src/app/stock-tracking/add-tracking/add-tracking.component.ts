@@ -4,8 +4,7 @@ import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-add-tracking",
-  templateUrl: "./add-tracking.component.html",
-  styleUrls: ["./add-tracking.component.css"]
+  templateUrl: "./add-tracking.component.html"
 })
 export class AddTrackingComponent {
 

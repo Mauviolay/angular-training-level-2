@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { StockTrackingService } from "../../core/services/stock-tracking.service";
 import { Company } from "../../core/models/company";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-show-stocks',

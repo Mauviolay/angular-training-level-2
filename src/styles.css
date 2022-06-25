@@ -1,5 +1,6 @@
 .block {
-    border: black 1px solid;
+    background: #F5F5F5;
+    border-left: #555555 1px solid;
     padding: 1rem;
     margin: 1rem;
 }
@@ -9,10 +10,43 @@
     flex-direction: row;
     width: 100%;
 }
+
 .flex-box {
     width: 250px;
 }
 
 .informations {
     width: 400px;
+}
+
+.button {
+    border: 1px solid black;
+    background: #737670;
+    color: white;
+    border-radius: 7px;
+    box-shadow: 0 3px 0px #3C3D3B;
+    transition: all .2s;
+    padding: 5px 5px;
+    cursor: pointer;
+}
+
+.button:active {
+    top: 3px;
+    box-shadow: 0 2px 0 #3C3D3B;
+    transition: all .2s;
+}
+
+.close{
+    background: #E04B43;
+    box-shadow: 0 5px 0 #471815;
+}
+
+.close:active {
+    top: 3px;
+    box-shadow: 0 2px 0px #471815;
+    transition: all .2s;
+}
+
+.input {
+    margin-right: 10px;
 }

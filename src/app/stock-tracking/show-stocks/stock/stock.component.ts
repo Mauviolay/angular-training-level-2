@@ -5,8 +5,7 @@ import { Company } from "../../../core/models/company";
 
 @Component({
   selector: "app-stock",
-  templateUrl: "./stock.component.html",
-  styleUrls: ["./stock.component.css"]
+  templateUrl: "./stock.component.html"
 })
 export class StockComponent implements OnInit {
   @Input() tracking: Company;

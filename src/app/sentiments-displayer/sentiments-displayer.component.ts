@@ -7,8 +7,7 @@ import { Sentiment } from "../core/models/sentiment";
 
 @Component({
   selector: "app-sentiment-displayer",
-  templateUrl: "./sentiments-displayer.component.html",
-  styleUrls: ["./sentiments-displayer.component.css"]
+  templateUrl: "./sentiments-displayer.component.html"
 })
 export class SentimentsDisplayerComponent implements OnInit {
   tracking: Company;

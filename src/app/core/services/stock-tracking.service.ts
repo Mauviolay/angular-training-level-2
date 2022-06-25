@@ -16,13 +16,13 @@ export class StockTrackingService {
   private storedTrackings: Company[];
 
   constructor(private httpClient: HttpClient) {
-    let trackingsFromStorage = JSON.parse(localStorage.getItem(this.TRACKINGS_KEY)) as Company[];
+    let trackingsFromStorage = this.exportTrackingsFromLocalStorage();
     this.storedTrackings = trackingsFromStorage || [];
   }
 
   get trackings(): Observable<Company[]> {
     if (!this.cache$) {
-      this.cache$ = of(this.storedTrackings).pipe(shareReplay(1));
+      this.cache$ = of(this.storedTrackings).pipe(shareReplay(this.CACHE_SIZE));
     }
     return this.cache$;
   }
@@ -32,13 +32,13 @@ export class StockTrackingService {
   }
 
   createTracking(symbol: string): void {
-    if (!this.storedTrackings.find(tracking => tracking.symbol === symbol)) {
+    if (!this.getTrackingBySymbol(symbol)) {
       this.httpClient.get(API_URL + "/api/v1/search?q=" + symbol)
         .pipe(map((companies: ResultCompanyApi) => (companies.result.filter(company => company.symbol === symbol))[0]),
           map(companyApi => mapToCompany(companyApi))
         ).subscribe(company => {
           this.storedTrackings.push(company);
-          localStorage.setItem(this.TRACKINGS_KEY, JSON.stringify(this.storedTrackings));
+          this.storeTrackingsInLocalStorage();
         });
     }
   }
@@ -48,7 +48,15 @@ export class StockTrackingService {
     if (trackingToDelete) {
       let trackingIndex = this.storedTrackings.indexOf(trackingToDelete);
       this.storedTrackings.splice(trackingIndex, 1);
-      localStorage.setItem(this.TRACKINGS_KEY, JSON.stringify(this.storedTrackings));
+      this.storeTrackingsInLocalStorage();
     }
+  }
+
+  private storeTrackingsInLocalStorage() {
+    localStorage.setItem(this.TRACKINGS_KEY, JSON.stringify(this.storedTrackings));
+  }
+
+  private exportTrackingsFromLocalStorage() {
+    return JSON.parse(localStorage.getItem(this.TRACKINGS_KEY)) as Company[];
   }
 }

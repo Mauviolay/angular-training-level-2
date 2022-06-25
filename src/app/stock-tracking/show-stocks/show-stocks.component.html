@@ -1,6 +1,6 @@
 <div class="block" *ngFor="let tracking of trackings$ | async;trackBy:trackByTracking">
   <div class="delete-item">
-    <a (click)="deleteTracking(tracking.symbol)">X</a>
+    <button class="button close" (click)="deleteTracking(tracking.symbol)">X</button>
   </div>
   <app-stock [tracking]="tracking"></app-stock>
 </div>
