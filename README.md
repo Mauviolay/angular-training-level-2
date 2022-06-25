@@ -1,3 +1,3 @@
-# angular-ivy-rzyg7m
+# Angular training level 2 - mini project
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-rzyg7m)
+[Test on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-rzyg7m)
