@@ -2,7 +2,21 @@
   <form #contactForm="ngForm" (ngSubmit)="addTracking(contactForm)">
     <label for="symbol">Enter the symbol of a stock to track (i.e. AAPL, TSLA, GOOGL)</label>
     <br />
-    <input class="input" maxlength="5" id="symbol" name="symbol" type="text" ngModel />
-    <button class="button" type="submit"> Track Stock</button>
+    <input
+      required
+      class="input"
+      maxlength="5"
+      id="symbol"
+      name="symbol"
+      type="text"
+      pattern="[A-Za-z]{1,5}"
+      ngModel />
+    <button
+      [disabled]="contactForm.invalid"
+      class="button"
+      type="submit"> Track Stock</button>
+    <div *ngIf="contactForm.dirty && contactForm.invalid" class="alert">
+      You have to enter a 1 to 5 letters symbol
+    </div>
   </form>
 </div>

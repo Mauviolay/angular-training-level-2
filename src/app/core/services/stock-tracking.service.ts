@@ -33,13 +33,17 @@ export class StockTrackingService {
 
   createTracking(symbol: string): void {
     if (!this.getTrackingBySymbol(symbol)) {
-      this.httpClient.get(API_URL + "/api/v1/search?q=" + symbol)
-        .pipe(map((companies: ResultCompanyApi) => (companies.result.filter(company => company.symbol === symbol))[0]),
-          map(companyApi => mapToCompany(companyApi))
-        ).subscribe(company => {
+      const observer = {
+        next: company => {
           this.storedTrackings.push(company);
           this.storeTrackingsInLocalStorage();
-        });
+        },
+        error: (error: Error) => console.log(error.message)
+      };
+
+      this.httpClient.get(API_URL + "/api/v1/search?q=" + symbol)
+        .pipe(map((companies: ResultCompanyApi) => this.getFirstCompany(companies, symbol))
+        ).subscribe(observer);
     }
   }
 
@@ -58,5 +62,13 @@ export class StockTrackingService {
 
   private exportTrackingsFromLocalStorage() {
     return JSON.parse(localStorage.getItem(this.TRACKINGS_KEY)) as Company[];
+  }
+
+  private getFirstCompany(companies: ResultCompanyApi, symbol: string) {
+    let companiesMatching = companies.result.filter(company => company.symbol === symbol);
+    if (companiesMatching.length <= 0) {
+      throw new Error("No stock found for this symbol");
+    }
+    return mapToCompany(companiesMatching[0]);
   }
 }

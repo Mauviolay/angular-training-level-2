@@ -5,6 +5,10 @@
     margin: 1rem;
 }
 
+.alert {
+    color: red;
+}
+
 .flex-display {
     display: flex;
     flex-direction: row;
@@ -34,6 +38,10 @@
 
 .button:active {
     background: #1f356a;
+}
+
+.button:disabled {
+    background: grey;
 }
 
 .close{
