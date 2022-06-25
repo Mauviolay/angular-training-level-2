@@ -20,31 +20,33 @@
 }
 
 .button {
-    border: 1px solid black;
-    background: #737670;
+    border: 1px solid #555555;
+    background: #284387;
     color: white;
-    border-radius: 7px;
-    box-shadow: 0 3px 0px #3C3D3B;
-    transition: all .2s;
-    padding: 5px 5px;
+    border-radius: 2px;
+    padding: 5px 8px;
     cursor: pointer;
 }
 
+.button:hover {
+    background: #3e65c5;
+}
+
 .button:active {
-    top: 3px;
-    box-shadow: 0 2px 0 #3C3D3B;
-    transition: all .2s;
+    background: #1f356a;
 }
 
 .close{
+    border-radius: 50px;
     background: #E04B43;
-    box-shadow: 0 5px 0 #471815;
+}
+
+.close:hover {
+    background: #e66f68;
 }
 
 .close:active {
-    top: 3px;
-    box-shadow: 0 2px 0px #471815;
-    transition: all .2s;
+    background: #bb261e;
 }
 
 .input {
